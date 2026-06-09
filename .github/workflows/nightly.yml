@@ -20,12 +20,12 @@ jobs:
     permissions:
       contents: write
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
         with:
           # This is required for checking out the tags, so that the next tag can be computed
           fetch-depth: '0'
       
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
         with:
           repository: 'TeamNewPipe/NewPipe'
           ref: 'dev'
@@ -61,7 +61,7 @@ jobs:
           echo "do_release=true" >> $GITHUB_ENV
           echo "current_commit=$current_commit" >> $GITHUB_OUTPUT
           
-      - uses: actions/setup-java@v4
+      - uses: actions/setup-java@v5
         if: ${{ env.do_release == 'true' }}
         with:
           distribution: 'temurin'
